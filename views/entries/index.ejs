@@ -1,0 +1,39 @@
+<h2>Search Blacklist</h2>
+<form action="/entries" method="GET">
+    <div>
+        <label>First Name</label>
+        <input type="text" name="firstName" value="<%= searchOptions.firstName %>">   
+    </div>
+    <div>
+        <label>Last Name</label>
+        <input type="text" name="lastName" value="<%= searchOptions.lastName %>">
+    </div>
+    <div>
+        <label>Date of Birth</label>
+        <input type="date" name="dateOfBirth" value="<%= moment(searchOptions.dateOfBirth).format('YYYY-MM-DD') %>"> 
+    </div>
+    <button type="submit">Search</button>
+</form>
+<br>
+<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">DOB</th>
+          </tr>
+        </thead>
+        <tbody>
+    <% entries.forEach(entry => { %>
+        <tr>
+            <td><%= entry.firstName %></td>
+            <td><%= entry.lastName %></td>
+            <td><%= moment(entry.dateOfBirth).format('YYYY-MM-DD') %></td>
+        </tr>
+    
+<% }); %>
+        </tbody>
+      </table>
+</div>
+

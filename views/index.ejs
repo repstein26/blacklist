@@ -1,1 +1,22 @@
-Middle
+<h2>Recently Added</h2>
+<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">DOB</th>
+          </tr>
+        </thead>
+        <tbody>
+    <% entries.forEach(entry => { %>
+        <tr>
+            <td><%= entry.firstName %></td>
+            <td><%= entry.lastName %></td>
+            <td><%= moment(entry.dateOfBirth).format('YYYY-MM-DD') %></td>
+        </tr>
+    
+<% }); %>
+        </tbody>
+      </table>
+</div>

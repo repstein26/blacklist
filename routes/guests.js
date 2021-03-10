@@ -1,5 +1,4 @@
 const express = require('express')
-const guest = require('../models/guest')
 const router = express.Router()
 const Guest = require('../models/guest')
 

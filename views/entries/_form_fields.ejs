@@ -1,0 +1,40 @@
+<div>
+    <div>
+        <label>First Name</label>
+        <input type="text" name="firstName" value="<%= entry.firstName %>">    
+    </div>
+    <div>
+        <label>Last Name</label>
+        <input type="text" name="lastName" value="<%= entry.lastName %>">
+    </div>
+    <div>
+        <label>Date of Birth</label>
+        <input type="date" name="dateOfBirth" value="<%= entry.dateOfBirth == null ? '' : entry.dateOfBirth.toISOString().split('T')[0] %>">
+    </div>
+</div>
+
+
+<div>   
+    <div>
+        <label>Reason for entry</label>
+        <textarea name="reason"><%= entry.reason %></textarea>
+    </div>
+    <div>
+        <label>Date of Incident</label>
+        <input type="date" name="dateOfIncident" value="<%= entry.dateOfIncident == null ? '' : entry.dateOfIncident.toISOString().split('T')[0] %>">    
+    </div>
+    <div>
+        <label>Location</label>
+        <input type="text" name="location" value="<%= entry.location %>">    
+    </div>
+    <div>
+        <label>Amount Owed</label>
+        <input type="number" name="amountOwed" min="0" value="<%= entry.amountOwed %>">    
+    </div>
+    <div>
+        <label>Reporter</label>
+        <input type="text" name="reporter" value="<%= entry.reporter %>">    
+   </div>
+</div>
+
+
