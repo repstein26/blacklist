@@ -12,9 +12,6 @@ router.get('/', async (req,res) => {
     if (req.query.lastName != null && req.query.lastName != ''){
         query = query.regex('lastName', new RegExp(req.query.lastName, 'i'))
     }
-    if (req.query.dateOfBirth != null && req.query.dateOfBirth != ''){
-        query = query.gte('dateOfBirth', req.query.dateOfBirth)
-    }
     try {
         const entries = await query.exec()
         res.render('entries/index', { 
