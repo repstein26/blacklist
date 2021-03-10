@@ -3,6 +3,7 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 const express = require('express')
+const path = require('path')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')

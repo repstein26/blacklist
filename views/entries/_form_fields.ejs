@@ -1,40 +1,42 @@
-<div>
-    <div>
-        <label>First Name</label>
-        <input type="text" name="firstName" value="<%= entry.firstName %>">    
+
+<div class="container">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" class="form-control" value="<%= entry.firstName %>">    
     </div>
-    <div>
-        <label>Last Name</label>
-        <input type="text" name="lastName" value="<%= entry.lastName %>">
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" class="form-control" value="<%= entry.lastName %>">
     </div>
-    <div>
-        <label>Date of Birth</label>
-        <input type="date" name="dateOfBirth" value="<%= entry.dateOfBirth == null ? '' : entry.dateOfBirth.toISOString().split('T')[0] %>">
+    <div class="form-group"> 
+        <label for="dateOfBirth">Date of Birth</label>
+        <input type="date" name="dateOfBirth" class="form-control" value="<%= entry.dateOfBirth == null ? '' : entry.dateOfBirth.toISOString().split('T')[0] %>">
+    </div>
+</div>
+
+<div class="container">    
+    <div class="form-group">
+        <label for="reason">Reason for entry</label>
+        <textarea name="reason" class="form-control"><%= entry.reason %></textarea>
+    </div>
+    <div class="form-group">
+        <label for="dateOfIncident">Date of Incident</label>
+        <input type="date" name="dateOfIncident" class="form-control" value="<%= entry.dateOfIncident == null ? '' : entry.dateOfIncident.toISOString().split('T')[0] %>">    
+    </div>
+    <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" name="location" class="form-control" value="<%= entry.location %>">    
+    </div>
+    <div class="form-group">
+        <label for="amountOwed">Amount Owed</label>
+        <input type="number" name="amountOwed" min="0" class="form-control" value="<%= entry.amountOwed %>">    
+    </div>
+    <div class="form-group">
+        <label for="reporter">Reporter</label>
+        <input type="text" name="reporter" class="form-control" value="<%= entry.reporter %>">    
     </div>
 </div>
 
 
-<div>   
-    <div>
-        <label>Reason for entry</label>
-        <textarea name="reason"><%= entry.reason %></textarea>
-    </div>
-    <div>
-        <label>Date of Incident</label>
-        <input type="date" name="dateOfIncident" value="<%= entry.dateOfIncident == null ? '' : entry.dateOfIncident.toISOString().split('T')[0] %>">    
-    </div>
-    <div>
-        <label>Location</label>
-        <input type="text" name="location" value="<%= entry.location %>">    
-    </div>
-    <div>
-        <label>Amount Owed</label>
-        <input type="number" name="amountOwed" min="0" value="<%= entry.amountOwed %>">    
-    </div>
-    <div>
-        <label>Reporter</label>
-        <input type="text" name="reporter" value="<%= entry.reporter %>">    
-   </div>
-</div>
 
 

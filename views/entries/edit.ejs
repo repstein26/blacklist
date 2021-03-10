@@ -1,6 +1,6 @@
 <h2>Edit blacklist entry</h2>
 <form action="/entries/<%=entry.id%>?_method=PUT" method="POST">
     <%- include('_form_fields') %>
-    <a href="/entries/<%=entry.id%>">Cancel</a>
-    <button type="submit">Update</button>
+    <a href="/entries/<%=entry.id%>" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-primary">Update</button>
 </form>
