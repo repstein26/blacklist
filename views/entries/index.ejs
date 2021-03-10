@@ -22,6 +22,9 @@
             <th scope="col">First</th>
             <th scope="col">Last</th>
             <th scope="col">DOB</th>
+            <td scope="col"></td>
+            <td scope="col"></td>
+            <td scope="col"></td>
           </tr>
         </thead>
         <tbody>
@@ -30,6 +33,12 @@
             <td><%= entry.firstName %></td>
             <td><%= entry.lastName %></td>
             <td><%= moment(entry.dateOfBirth).format('YYYY-MM-DD') %></td>
+            <td><a href="/entries/<%=entry.id%>">View</a></td>
+            <td><a href="/entries/<%=entry.id%>/edit">Edit</a></td>
+            <td>
+                <%- include('../partials/deleteForm',{
+                        url: `/entries/${entry.id}` })%>
+            </td>
         </tr>
     
 <% }); %>

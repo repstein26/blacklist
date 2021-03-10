@@ -27,6 +27,74 @@ router.get('/', async (req,res) => {
     }
 })
 
+//Show blacklist entry
+router.get('/:id', async (req, res) => {
+    try{
+        const entry = await Entry.findById(req.params.id)
+        res.render('entries/show', {
+            entry: entry
+        })
+    } catch {
+        res.redirect('/')
+    }
+})
+
+//Edit blacklist entry
+router.get('/:id/edit', async (req, res) => {
+    try{
+        const entry = await Entry.findById(req.params.id)
+        res.render('entries/edit', {entry: entry})
+    }catch{
+        res.redirect('/edit')
+    }
+})
+
+//Update blacklist entry
+router.put('/:id', async (req, res) => {
+    let entry
+    try{
+        entry = await Entry.findById(req.params.id)
+        entry.firstName = req.body.firstName,
+        entry.lastName = req.body.lastName,
+        entry.dateOfBirth = new Date(req.body.dateOfBirth),
+        entry.reason = req.body.reason,
+        entry.dateOfIncident = new Date(req.body.dateOfIncident),
+        entry.location = req.body.location,
+        entry.amountOwed = req.body.amountOwed,
+        entry.reporter = req.body.reporter
+
+        await entry.save()
+        res.redirect(`/entries/${entry.id}`)
+    } 
+    catch {
+        if (entry == null){
+            res.redirect('/')
+        } else {
+            res.render('entries/edit', {
+                entry: entry,
+                errorMessage: 'Error updating entry'
+            })
+        }
+    }
+})
+
+//Delete blacklist entry
+router.delete('/:id', async (req, res) => {
+    let entry
+    try{
+        entry = await Entry.findById(req.params.id)
+        await entry.remove()
+        res.redirect('/entries')
+    } 
+    catch {
+        if (entry == null){
+            res.redirect('/')
+        } else {
+            res.redirect(`/entries/${entry.id}`)
+        }
+    }
+})
+
 //New blacklist entry route
 router.get('/new', async (req,res) => {
     renderNewPage( res, new Entry())
@@ -47,8 +115,7 @@ router.post('/', async (req,res) => {
 
     try{
         const newEntry = await entry.save()
-       // res.redirect(`blacklist/${newEntry.id}`)
-       res.redirect('entries')
+        res.redirect(`entries/${newEntry.id}`)
     } 
     catch {
         renderNewPage(res, entry, true)

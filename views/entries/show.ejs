@@ -1,0 +1,4 @@
+<%- include('_form_fields') %>
+<a href="/entries/<%=entry.id%>/edit">Edit</a>
+<%- include('../partials/deleteForm',{
+    url: `/entries/${entry.id}` })%>
