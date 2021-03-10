@@ -27,6 +27,33 @@ router.get('/', async (req,res) => {
     }
 })
 
+//New blacklist entry
+router.get('/new', async (req,res) => {
+    renderNewPage( res, new Entry())
+})
+
+//Create blacklist entry
+router.post('/', async (req,res) => {
+    const entry = new Entry({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        dateOfBirth: new Date(req.body.dateOfBirth),
+        reason: req.body.reason,
+        dateOfIncident: new Date(req.body.dateOfIncident),
+        location: req.body.location,
+        amountOwed: req.body.amountOwed,
+        reporter: req.body.reporter
+    })
+
+    try{
+        const newEntry = await entry.save()
+        res.redirect(`entries/${newEntry.id}`)
+    } 
+    catch {
+        renderNewPage(res, entry, true)
+    }
+})
+
 //Show blacklist entry
 router.get('/:id', async (req, res) => {
     try{
@@ -92,33 +119,6 @@ router.delete('/:id', async (req, res) => {
         } else {
             res.redirect(`/entries/${entry.id}`)
         }
-    }
-})
-
-//New blacklist entry route
-router.get('/new', async (req,res) => {
-    renderNewPage( res, new Entry())
-})
-
-//Create blacklist entry route
-router.post('/', async (req,res) => {
-    const entry = new Entry({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        dateOfBirth: new Date(req.body.dateOfBirth),
-        reason: req.body.reason,
-        dateOfIncident: new Date(req.body.dateOfIncident),
-        location: req.body.location,
-        amountOwed: req.body.amountOwed,
-        reporter: req.body.reporter
-    })
-
-    try{
-        const newEntry = await entry.save()
-        res.redirect(`entries/${newEntry.id}`)
-    } 
-    catch {
-        renderNewPage(res, entry, true)
     }
 })
 
