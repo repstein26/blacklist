@@ -12,6 +12,12 @@ router.get('/', async (req,res) => {
     if (req.query.lastName != null && req.query.lastName != ''){
         query = query.regex('lastName', new RegExp(req.query.lastName, 'i'))
     }
+    if (req.query.phone != null && req.query.phone != ''){
+        query = query.regex('phone', new RegExp(req.query.phone, 'i'))
+    }
+    if (req.query.email != null && req.query.email != ''){
+        query = query.regex('email', new RegExp(req.query.email, 'i'))
+    }
     try {
         const entries = await query.exec()
         res.render('entries/index', { 
@@ -34,9 +40,11 @@ router.post('/', async (req,res) => {
     const entry = new Entry({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        dateOfBirth: new Date(req.body.dateOfBirth),
+        phone: req.body.phone,
+        email: req.body.email,
+        dateOfBirth: req.body.dateOfBirth,
         reason: req.body.reason,
-        dateOfIncident: new Date(req.body.dateOfIncident),
+        description: req.body.description,
         location: req.body.location,
         amountOwed: req.body.amountOwed,
         reporter: req.body.reporter
@@ -80,10 +88,12 @@ router.put('/:id', async (req, res) => {
         entry = await Entry.findById(req.params.id)
         entry.firstName = req.body.firstName,
         entry.lastName = req.body.lastName,
+        entry.phone = req.body.phone,
+        entry.email = req.body.email,
         entry.dateOfBirth = new Date(req.body.dateOfBirth),
-        entry.reason = req.body.reason,
-        entry.dateOfIncident = new Date(req.body.dateOfIncident),
         entry.location = req.body.location,
+        entry.reason = req.body.reason,
+        entry.description = req.body.description,
         entry.amountOwed = req.body.amountOwed,
         entry.reporter = req.body.reporter
 

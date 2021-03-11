@@ -2,25 +2,33 @@ const mongoose = require('mongoose')
 
 const entrySchema = new mongoose.Schema({
     firstName: {
-        type: String
+        type: String,
+        required: true
     },
     lastName: {
-        type: String
+        type: String,
+        required: true
     },
     dateOfBirth: {
-        type: Date
+        type: String
     },
-    dateOfIncident: {
-        type: Date
+    phone: {
+        type: String
+    },
+    email: {
+        type: String
+    },
+    location: {
+        type: String
     },
     reason: {
         type: String
     },
+    description: {
+        type: String
+    },
     amountOwed: {
         type: Number
-    },
-    location: {
-        type: String
     },
     reporter: {
         type: String

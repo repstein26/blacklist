@@ -9,27 +9,44 @@
         <input type="text" name="lastName" class="form-control" value="<%= entry.lastName %>">
     </div>
     <div class="form-group"> 
+        <label for="phone">Phone Number</label>
+        <input type="tel" name="phone" class="form-control" value="<%=entry.phone%>">
+    </div>
+    <div class="form-group"> 
+        <label for="email">Email</label>
+        <input type="email" name="email" class="form-control" value="<%=entry.email%>">
+    </div>
+    <div class="form-group"> 
         <label for="dateOfBirth">Date of Birth</label>
-        <input type="date" name="dateOfBirth" class="form-control" value="<%= entry.dateOfBirth == null ? '' : entry.dateOfBirth.toISOString().split('T')[0] %>">
+        <input type="date" name="dateOfBirth" class="form-control" value="<%= entry.dateOfBirth == null ? '' : new Date(entry.dateOfBirth).toISOString().split("T")[0]%>">
     </div>
 </div>
 
 <div class="container">    
     <div class="form-group">
-        <label for="reason">Reason for entry</label>
-        <textarea name="reason" class="form-control"><%= entry.reason %></textarea>
+        <label for="location">Location</label>    
+        <input type="text" name="location" class="form-control" value="<%= entry.location %>">
+    
+        <!--select class="form-select form-control" name="location">
+            <option label="Claridge" value="Claridge"></option>
+            <option label="Other" value="Other"></option>
+        
+        </select-->
     </div>
     <div class="form-group">
-        <label for="dateOfIncident">Date of Incident</label>
-        <input type="date" name="dateOfIncident" class="form-control" value="<%= entry.dateOfIncident == null ? '' : entry.dateOfIncident.toISOString().split('T')[0] %>">    
+        <label for="reason">Reason</label>
+        <input type="text" name="reason" class="form-control" value="<%= entry.reason %>">
     </div>
     <div class="form-group">
-        <label for="location">Location</label>
-        <input type="text" name="location" class="form-control" value="<%= entry.location %>">    
+        <label for="description">Description</label>
+        <textarea name="description" class="form-control"><%= entry.description %></textarea>
     </div>
     <div class="form-group">
         <label for="amountOwed">Amount Owed</label>
-        <input type="number" name="amountOwed" min="0" class="form-control" value="<%= entry.amountOwed %>">    
+        <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="number" name="amountOwed" min="0" class="form-control" value="<%= entry.amountOwed %>">
+        </div>
     </div>
     <div class="form-group">
         <label for="reporter">Reporter</label>
@@ -37,6 +54,9 @@
     </div>
 </div>
 
+<script>
+
+</script>
 
 
 
