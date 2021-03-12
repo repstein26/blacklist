@@ -10,7 +10,7 @@ router.get('/', async (req,res) => {
     }  catch{
         entries = []
     }
-    res.render('index', { entries: entries, moment: moment, })
+    res.render('index', { entries: entries, moment: moment })
 })
 
 module.exports = router
