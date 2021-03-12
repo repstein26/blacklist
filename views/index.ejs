@@ -1,28 +1,38 @@
-<h2>Recently Added</h2>
+<h1>
+Welcome to Guest Inspector!
+</h1>
 <div>
-  <table class="table table-striped table-hover">
-      <thead>
+  <p>Guest Inspector is an online database for businesses to verify their guests and ensure that the guest is welcome to their establishment. </p>
+  <p>Add guests to this database if they have violated your business's code of conduct and are not welcome back, and search incoming guests to ensure that they have not previously been blacklisted from your business and/or similar businesses.  </p>
+</div>
+<hr>
+<div>
+  <h2>Recently Added</h2>
+  <div>
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th style="width: 35%">Reason</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+    <% entries.forEach(entry => { %>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Phone</th>
-          <th>Email</th>
-          <th style="width: 35%">Reason</th>
-          <th></th>
+            <td><%= entry.firstName %></td>
+            <td><%= entry.lastName %></td>
+            <td><%= entry.phone %></td>
+            <td><%= entry.email %></td>
+            <td><%= entry.reason %></td>
+            <td><a href="/entries/<%=entry.id%>" class="btn btn-primary">Details</a></td>
         </tr>
-      </thead>
-      <tbody>
-  <% entries.forEach(entry => { %>
-      <tr>
-          <td><%= entry.firstName %></td>
-          <td><%= entry.lastName %></td>
-          <td><%= entry.phone %></td>
-          <td><%= entry.email %></td>
-          <td><%= entry.reason %></td>
-          <td><a href="/entries/<%=entry.id%>" class="btn btn-primary">Details</a></td>
-      </tr>
-  
-<% }); %>
-      </tbody>
-    </table>
+    
+  <% }); %>
+        </tbody>
+      </table>
+  </div>
 </div>
