@@ -5,3 +5,7 @@ body{
 .btn-primary{
     background-color: black;
 }
+
+.fa-check{
+    color:green;
+}
